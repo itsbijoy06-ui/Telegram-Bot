@@ -202,5 +202,5 @@ def cmd_reject(message):
     if message.chat.id != ADMIN_ID: return
     try:
         user_id = int(message.text.split()[1])
-        _pending_deposit.pop(user
+        _pending_deposit.pop(user)
       
