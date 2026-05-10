@@ -201,6 +201,9 @@ def cmd_broadcast(message):
 def cmd_reject(message):
     if message.chat.id != ADMIN_ID: return
     try:
-        user_id = int(message.text.split()[1])
-        _pending_deposit.pop(user)
-      
+    user_id = int(message.text.split()[1])
+    _pending_deposit.pop(user_id, None)
+    bot.send_message(message.chat.id, f"❌ {user_id} এর deposit reject করা হয়েছে।")
+except:
+    bot.send_message(message.chat.id, "❌ Use: /reject user_id")
+
