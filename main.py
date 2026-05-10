@@ -9,9 +9,10 @@ import database as db
 import keyboards as kb
 
 BOT_TOKEN = os.environ.get("8670625404:AAF6K3rNfcVewn_fMhrgtUevFQQlGLmUgww")
-if not BOT_TOKEN:
-    raise RuntimeError("TELEGRAM_BOT_TOKEN environment variable is not set.")
 
+if not BOT_TOKEN:
+    raise RuntimeError("BOT_TOKEN is not set.")
+    
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 
 ADMIN_ID = 7268416193
