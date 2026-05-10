@@ -197,13 +197,14 @@ def cmd_broadcast(message):
     bot.send_message(message.chat.id, f"✅ Broadcast সম্পন্ন!\n\n✔ Sent: {sent}\n❌ Failed: {failed}")
 
 # ── Admin: /reject ───────────────────────────────────────────────────────────
+
 @bot.message_handler(commands=["reject"])
 def cmd_reject(message):
-    if message.chat.id != ADMIN_ID: return
+    if message.chat.id != ADMIN_ID:
+        return
     try:
-    user_id = int(message.text.split()[1])
-    _pending_deposit.pop(user_id, None)
-    bot.send_message(message.chat.id, f"❌ {user_id} এর deposit reject করা হয়েছে।")
-except:
-    bot.send_message(message.chat.id, "❌ Use: /reject user_id")
-
+        user_id = int(message.text.split()[1])
+        _pending_deposit.pop(user_id, None)
+        bot.send_message(message.chat.id, f"❌ {user_id} এর deposit reject করা হয়েছে।")
+    except:
+        bot.send_message(message.chat.id, "❌ Use: /reject user_id")
