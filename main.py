@@ -1,19 +1,19 @@
 import os
-import datetime
-import random
-import string
 import telebot
-from telebot import types
 
-import database as db
-import keyboards as kb
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
-# ✅ ENV FIX
-BOT_TOKEN = os.environ.get("8670625404:AAF6K3rNfcVewn_fMhrgtUevFQQlGLmUgww")
+# ✅ Crash বন্ধ করার জন্য safe fallback
 if not BOT_TOKEN:
-    raise RuntimeError("BOT_TOKEN is not set.")
+    print("❌ BOT_TOKEN not found! Using fallback...")
+    BOT_TOKEN = "8670625404:AAF6K3rNfcVewn_fMhrgtUevFQQlGLmUgww"   # ⚠️ এখানে নিজের token বসাতে পারো
 
-bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
+bot = telebot.TeleBot(BOT_TOKEN)
+
+print("Bot started...")
+
+bot.infinity_polling()
+
 
 ADMIN_ID = 7268416193
 CHANNELS = ["@tronex_bd", "@EL_SMM_PANEL"]
